@@ -17,11 +17,18 @@ void setup()
   Serial.begin(9600);//Prepare serial port for use
   
   Serial.println("Initializing... ");
-  Initialize(sensorController);
+  
+  // SystemController Initialization
+  Initialize(sensorController, productController);
   
   if(sensorController.GetState())
   {
     Serial.println("Sensor controller initialized");
+  };
+  
+  if(productController.GetState())
+  {
+    Serial.println("Product controller initialized");
   };
 }
 
