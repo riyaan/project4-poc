@@ -1,0 +1,72 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "POC", "POC", "{52013A33-4EFA-4D2B-9ECD-DBF9E822C4F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Product", "project4\POC\Business\Product.csproj", "{90DD4A5A-9D55-497F-BBB8-760718C996EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplication1", "project4\POC\ConsoleApplication1\ConsoleApplication1.csproj", "{7AD5B341-CBFC-4F1C-A82D-1D7699A363D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store", "project4\POC\Data\Store\Store.csproj", "{514685D4-CCEF-4C94-9F15-824AB4298DE7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Event", "project4\POC\Environment\Event\Event.csproj", "{C2DE3A59-1532-4E8A-8279-6FDBA5D47ADF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Arduino", "Arduino", "{A0AAD1FE-3515-456E-9380-A1EE416BD753}"
+	ProjectSection(SolutionItems) = preProject
+		project4\Arduino\common.cpp = project4\Arduino\common.cpp
+		project4\Arduino\common.h = project4\Arduino\common.h
+		project4\Arduino\costController.cpp = project4\Arduino\costController.cpp
+		project4\Arduino\costController.h = project4\Arduino\costController.h
+		project4\Arduino\displayController.cpp = project4\Arduino\displayController.cpp
+		project4\Arduino\displayController.h = project4\Arduino\displayController.h
+		project4\Arduino\helloWorld.cpp = project4\Arduino\helloWorld.cpp
+		project4\Arduino\helloWorld.h = project4\Arduino\helloWorld.h
+		project4\Arduino\productController.cpp = project4\Arduino\productController.cpp
+		project4\Arduino\productController.h = project4\Arduino\productController.h
+		project4\Arduino\ReadInputFromIDE_ino.ino = project4\Arduino\ReadInputFromIDE_ino.ino
+		project4\Arduino\sensorController.cpp = project4\Arduino\sensorController.cpp
+		project4\Arduino\sensorController.h = project4\Arduino\sensorController.h
+		project4\Arduino\systemController.cpp = project4\Arduino\systemController.cpp
+		project4\Arduino\systemController.h = project4\Arduino\systemController.h
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplication2", "project4\Arduino\ConsoleApplication2\ConsoleApplication2.csproj", "{C07C4F76-1641-42E3-8888-6B3A247E1551}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{90DD4A5A-9D55-497F-BBB8-760718C996EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90DD4A5A-9D55-497F-BBB8-760718C996EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90DD4A5A-9D55-497F-BBB8-760718C996EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90DD4A5A-9D55-497F-BBB8-760718C996EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AD5B341-CBFC-4F1C-A82D-1D7699A363D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AD5B341-CBFC-4F1C-A82D-1D7699A363D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AD5B341-CBFC-4F1C-A82D-1D7699A363D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AD5B341-CBFC-4F1C-A82D-1D7699A363D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{514685D4-CCEF-4C94-9F15-824AB4298DE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{514685D4-CCEF-4C94-9F15-824AB4298DE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{514685D4-CCEF-4C94-9F15-824AB4298DE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{514685D4-CCEF-4C94-9F15-824AB4298DE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2DE3A59-1532-4E8A-8279-6FDBA5D47ADF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2DE3A59-1532-4E8A-8279-6FDBA5D47ADF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2DE3A59-1532-4E8A-8279-6FDBA5D47ADF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2DE3A59-1532-4E8A-8279-6FDBA5D47ADF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C07C4F76-1641-42E3-8888-6B3A247E1551}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C07C4F76-1641-42E3-8888-6B3A247E1551}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C07C4F76-1641-42E3-8888-6B3A247E1551}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C07C4F76-1641-42E3-8888-6B3A247E1551}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{90DD4A5A-9D55-497F-BBB8-760718C996EC} = {52013A33-4EFA-4D2B-9ECD-DBF9E822C4F1}
+		{7AD5B341-CBFC-4F1C-A82D-1D7699A363D0} = {52013A33-4EFA-4D2B-9ECD-DBF9E822C4F1}
+		{514685D4-CCEF-4C94-9F15-824AB4298DE7} = {52013A33-4EFA-4D2B-9ECD-DBF9E822C4F1}
+		{C2DE3A59-1532-4E8A-8279-6FDBA5D47ADF} = {52013A33-4EFA-4D2B-9ECD-DBF9E822C4F1}
+		{C07C4F76-1641-42E3-8888-6B3A247E1551} = {A0AAD1FE-3515-456E-9380-A1EE416BD753}
+	EndGlobalSection
+EndGlobal
