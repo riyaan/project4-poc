@@ -16,9 +16,11 @@ class ProductController
     bool GetState() { return State; }
     bool SetState(bool value) { State = value; }
     
+    bool AddItemToList(Product product);
+    
     bool AddProduct(int RFIDTag, char* Description, float Price);
     bool RemoveProduct(int RFIDTag);
-    Product * GetAllProducts();
+    Product* GetAllProducts() { return &(ProductList[0]); }
 };
 
 #endif

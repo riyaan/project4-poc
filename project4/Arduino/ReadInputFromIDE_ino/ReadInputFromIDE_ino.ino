@@ -1,3 +1,5 @@
+#include <Logging.h>
+
 #include "common.h"
 #include "systemController.h"
 #include "sensorController.h"
@@ -5,7 +7,10 @@
 #include "costController.h"
 #include "displayController.h"
 
+#define LOGLEVEL LOG_LEVEL_DEBUG
+
 int failedTries=0;
+const int BAUD_RATE = 9600;
 
 SensorController sensorController;
 ProductController productController;
@@ -13,22 +18,23 @@ CostController costController;
 DisplayController displayController;
 
 void setup()
-{
-  Serial.begin(9600);//Prepare serial port for use
-  
-  Serial.println("Initializing... ");
+{             
+  Serial.begin(BAUD_RATE);//Prepare serial port for use
+   
+  Log.Init(LOGLEVEL, BAUD_RATE);
+  Log.Info("Setup... "CR);
   
   // SystemController Initialization
   Initialize(sensorController, productController);
   
   if(sensorController.GetState())
   {
-    Serial.println("Sensor controller initialized");
+    Log.Info("SensorController initialized"CR);
   };
   
   if(productController.GetState())
   {
-    Serial.println("Product controller initialized");
+    Log.Info("Product controller initialized"CR);
   };
 }
 
@@ -50,13 +56,20 @@ void loop()
     input = FetchNextCharacterAndAddToAccumulator(incomingByte, input, p);
   };  
   
-  Serial.print("Two times ");
-  Serial.print(input);
-  Serial.print(" is ");
+  Log.Debug("Input: %d"CR, input);
   
-  input = input * 2;
+  if(productController.AddProduct(input, "Linctagon Nasal Spray", 78.99))
+    Log.Info("Successfully added product"CR);
+  else
+    Log.Info("Failed to add the product."CR);
   
-  Serial.println(input);
+  //Serial.print("Two times ");
+  //Serial.print(input);
+  //Serial.print(" is ");
+  
+  //input = input * 2;
+  
+  //Serial.println(input);
 }
 
 /*
