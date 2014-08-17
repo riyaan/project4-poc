@@ -13,8 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Event", "project4\POC\Envir
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Arduino", "Arduino", "{A0AAD1FE-3515-456E-9380-A1EE416BD753}"
 	ProjectSection(SolutionItems) = preProject
-		project4\Arduino\common.cpp = project4\Arduino\common.cpp
-		project4\Arduino\common.h = project4\Arduino\common.h
+		project4\Arduino\ReadInputFromIDE_ino\common.cpp = project4\Arduino\ReadInputFromIDE_ino\common.cpp
+		project4\Arduino\ReadInputFromIDE_ino\common.h = project4\Arduino\ReadInputFromIDE_ino\common.h
 		project4\Arduino\ReadInputFromIDE_ino\costController.cpp = project4\Arduino\ReadInputFromIDE_ino\costController.cpp
 		project4\Arduino\ReadInputFromIDE_ino\costController.h = project4\Arduino\ReadInputFromIDE_ino\costController.h
 		project4\Arduino\ReadInputFromIDE_ino\displayController.cpp = project4\Arduino\ReadInputFromIDE_ino\displayController.cpp
@@ -23,10 +23,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Arduino", "Arduino", "{A0AA
 		project4\Arduino\ReadInputFromIDE_ino\helloWorld.h = project4\Arduino\ReadInputFromIDE_ino\helloWorld.h
 		project4\Arduino\ReadInputFromIDE_ino\productController.cpp = project4\Arduino\ReadInputFromIDE_ino\productController.cpp
 		project4\Arduino\ReadInputFromIDE_ino\productController.h = project4\Arduino\ReadInputFromIDE_ino\productController.h
-		project4\Arduino\ReadInputFromIDE_ino.ino = project4\Arduino\ReadInputFromIDE_ino.ino
+		project4\Arduino\ReadInputFromIDE_ino\ReadInputFromIDE_ino.ino = project4\Arduino\ReadInputFromIDE_ino\ReadInputFromIDE_ino.ino
 		project4\Arduino\ReadInputFromIDE_ino\sensorController.cpp = project4\Arduino\ReadInputFromIDE_ino\sensorController.cpp
-		project4\Arduino\sensorController.h = project4\Arduino\sensorController.h
-		project4\Arduino\systemController.cpp = project4\Arduino\systemController.cpp
+		project4\Arduino\ReadInputFromIDE_ino\sensorController.h = project4\Arduino\ReadInputFromIDE_ino\sensorController.h
+		project4\Arduino\ReadInputFromIDE_ino\systemController.cpp = project4\Arduino\ReadInputFromIDE_ino\systemController.cpp
 		project4\Arduino\ReadInputFromIDE_ino\systemController.h = project4\Arduino\ReadInputFromIDE_ino\systemController.h
 	EndProjectSection
 EndProject
