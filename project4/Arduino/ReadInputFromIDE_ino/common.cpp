@@ -5,8 +5,10 @@ int FetchNextCharacterAndAddToAccumulator(int incomingByte, int accumulator, int
   if (incomingByte!=-1) 
   {
       accumulator=(accumulator*10)+incomingByte;
-  };          
-  (*failedTries)++;  
+  };
+
+  (*failedTries)++;
+
   return accumulator;
 }
 
