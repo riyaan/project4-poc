@@ -1,4 +1,0 @@
-barcode,brand,description,price
-6001345000209,Selati,White Sugar 2.5kg,27.99
-5449000009067,Coca-cola,Regular 2 Litre,14.99
-6001085126573,Omo,Multi Active Flex Washing Powder 2kg,53.99
