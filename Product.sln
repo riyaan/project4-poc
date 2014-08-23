@@ -34,6 +34,32 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Arduino", "Arduino", "{A0AA
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ConsoleApplication3", "project4\Arduino\ConsoleApplication3\ConsoleApplication3.vcxproj", "{0D6F1CE6-00EA-46DF-B79A-6D35503C1738}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ReadRFIDTag_ino", "ReadRFIDTag_ino", "{37DB237C-CEC6-43FE-B116-23FEDC492BFA}"
+	ProjectSection(SolutionItems) = preProject
+		project4\Arduino\ReadRFIDTag_ino\ReadRFIDTag_ino.ino = project4\Arduino\ReadRFIDTag_ino\ReadRFIDTag_ino.ino
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ReadInputFromIDE_ino", "ReadInputFromIDE_ino", "{7C694A96-16C3-4AFA-ABE9-92D3F697A403}"
+	ProjectSection(SolutionItems) = preProject
+		project4\Arduino\ReadInputFromIDE_ino\common.cpp = project4\Arduino\ReadInputFromIDE_ino\common.cpp
+		project4\Arduino\ReadInputFromIDE_ino\common.h = project4\Arduino\ReadInputFromIDE_ino\common.h
+		project4\Arduino\ReadInputFromIDE_ino\costController.cpp = project4\Arduino\ReadInputFromIDE_ino\costController.cpp
+		project4\Arduino\ReadInputFromIDE_ino\costController.h = project4\Arduino\ReadInputFromIDE_ino\costController.h
+		project4\Arduino\ReadInputFromIDE_ino\displayController.cpp = project4\Arduino\ReadInputFromIDE_ino\displayController.cpp
+		project4\Arduino\ReadInputFromIDE_ino\displayController.h = project4\Arduino\ReadInputFromIDE_ino\displayController.h
+		project4\Arduino\ReadInputFromIDE_ino\helloWorld.cpp = project4\Arduino\ReadInputFromIDE_ino\helloWorld.cpp
+		project4\Arduino\ReadInputFromIDE_ino\helloWorld.h = project4\Arduino\ReadInputFromIDE_ino\helloWorld.h
+		project4\Arduino\ReadInputFromIDE_ino\product.cpp = project4\Arduino\ReadInputFromIDE_ino\product.cpp
+		project4\Arduino\ReadInputFromIDE_ino\product.h = project4\Arduino\ReadInputFromIDE_ino\product.h
+		project4\Arduino\ReadInputFromIDE_ino\productController.cpp = project4\Arduino\ReadInputFromIDE_ino\productController.cpp
+		project4\Arduino\ReadInputFromIDE_ino\productController.h = project4\Arduino\ReadInputFromIDE_ino\productController.h
+		project4\Arduino\ReadInputFromIDE_ino\ReadInputFromIDE_ino.ino = project4\Arduino\ReadInputFromIDE_ino\ReadInputFromIDE_ino.ino
+		project4\Arduino\ReadInputFromIDE_ino\sensorController.cpp = project4\Arduino\ReadInputFromIDE_ino\sensorController.cpp
+		project4\Arduino\ReadInputFromIDE_ino\sensorController.h = project4\Arduino\ReadInputFromIDE_ino\sensorController.h
+		project4\Arduino\ReadInputFromIDE_ino\systemController.cpp = project4\Arduino\ReadInputFromIDE_ino\systemController.cpp
+		project4\Arduino\ReadInputFromIDE_ino\systemController.h = project4\Arduino\ReadInputFromIDE_ino\systemController.h
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -104,5 +130,7 @@ Global
 		{514685D4-CCEF-4C94-9F15-824AB4298DE7} = {52013A33-4EFA-4D2B-9ECD-DBF9E822C4F1}
 		{C2DE3A59-1532-4E8A-8279-6FDBA5D47ADF} = {52013A33-4EFA-4D2B-9ECD-DBF9E822C4F1}
 		{0D6F1CE6-00EA-46DF-B79A-6D35503C1738} = {A0AAD1FE-3515-456E-9380-A1EE416BD753}
+		{37DB237C-CEC6-43FE-B116-23FEDC492BFA} = {A0AAD1FE-3515-456E-9380-A1EE416BD753}
+		{7C694A96-16C3-4AFA-ABE9-92D3F697A403} = {A0AAD1FE-3515-456E-9380-A1EE416BD753}
 	EndGlobalSection
 EndGlobal
