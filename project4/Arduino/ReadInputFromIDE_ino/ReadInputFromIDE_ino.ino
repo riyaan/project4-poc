@@ -60,7 +60,7 @@ void loop()
   //do nothing (except continue to check) until something has been sent.
   while (Serial.available() == 0) {;};
   
-  while ((Serial.available() > 0) || (failedTries < 250))
+  while ((Serial.available() > 0) || (failedTries < 1000))
   {
     int *p=&failedTries;
 	myByte = Serial.read();
