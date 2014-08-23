@@ -1,6 +1,9 @@
 #ifndef productController_h
 #define productController_h
 
+#include <StandardCplusplus.h>
+#include <vector>
+
 #include "product.h"
 
 const int MAX = 30;
@@ -9,7 +12,7 @@ class ProductController
 {
   private:
     bool State;
-    Product ProductList[MAX];
+    vector<Product> ProductList;	
   public:
     ProductController();
     void Initialize();
@@ -20,7 +23,7 @@ class ProductController
     
     bool AddProduct(int RFIDTag, char* Description, int Price);
     bool RemoveProduct(int RFIDTag);
-    Product* GetAllProducts() { return &(ProductList[0]); }
+    vector<Product> GetAllProducts() { return ProductList; }
 };
 
 #endif

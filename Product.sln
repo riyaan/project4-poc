@@ -30,7 +30,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ReadInputFromIDE_ino", "Rea
 		project4\Arduino\ReadInputFromIDE_ino\displayController.h = project4\Arduino\ReadInputFromIDE_ino\displayController.h
 		project4\Arduino\ReadInputFromIDE_ino\helloWorld.cpp = project4\Arduino\ReadInputFromIDE_ino\helloWorld.cpp
 		project4\Arduino\ReadInputFromIDE_ino\helloWorld.h = project4\Arduino\ReadInputFromIDE_ino\helloWorld.h
-		project4\Arduino\ReadInputFromIDE_ino\product.cpp = project4\Arduino\ReadInputFromIDE_ino\product.cpp
 		project4\Arduino\ReadInputFromIDE_ino\product.h = project4\Arduino\ReadInputFromIDE_ino\product.h
 		project4\Arduino\ReadInputFromIDE_ino\productController.cpp = project4\Arduino\ReadInputFromIDE_ino\productController.cpp
 		project4\Arduino\ReadInputFromIDE_ino\productController.h = project4\Arduino\ReadInputFromIDE_ino\productController.h

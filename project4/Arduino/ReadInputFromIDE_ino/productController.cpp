@@ -29,16 +29,25 @@ bool ProductController::AddProduct(int RFIDTag, char* Description, int Price)
 
 bool ProductController::AddItemToList(Product product)
 {
-  Product* list = GetAllProducts();  
-  int element_count = sizeof(list)/sizeof(Product);
+	Log.Info("Adding an item to the list..."CR);  
+
+	//Product* list = GetAllProducts();  
+	//int element_count = sizeof(list)/sizeof(Product);
   
-  Log.Debug("There are %d items in the basket"CR, element_count);
+	Log.Debug("There are %d items in the basket"CR, element_count);
   
   if(element_count > 0)
   {
       list[element_count-1] = product;
   }
-  return true;
+
+	Log.Info("... item has been added to the list"CR);  
+	
+	list = GetAllProducts();  
+	element_count = sizeof(list)/sizeof(Product);
+  
+	Log.Debug("There are %d items in the basket"CR, element_count);
+
+	return true;
 }
     //bool RemoveProduct(int RFIDTag);
-    //Product* GetAllProducts();
