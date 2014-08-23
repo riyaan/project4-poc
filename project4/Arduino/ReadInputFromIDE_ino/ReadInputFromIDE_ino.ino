@@ -53,19 +53,28 @@ void loop()
   Log.Info("Arduino loop"CR);
 
   int input=0;
+  int myByte=0;
+  int incomingByte=0;
   failedTries=0;
   
   //do nothing (except continue to check) until something has been sent.
   while (Serial.available() == 0) {;};
   
-  while ((Serial.available() > 0) || (failedTries < 1000))
+  while ((Serial.available() > 0) || (failedTries < 250))
   {
     int *p=&failedTries;
-    int incomingByte = AsciiToBinary(Serial.read());
+	myByte = Serial.read();
+    incomingByte = AsciiToBinary(myByte);
     input = FetchNextCharacterAndAddToAccumulator(incomingByte, input, p);
   };  
   
-  Log.Debug("Input: %d"CR, input);
+  Log.Debug("Input byte: %d"CR, myByte);
+  Log.Debug("After AsciiToBinary: %d"CR, incomingByte);
+  Log.Debug("After FNC: %d"CR, input);
+
+  Serial.println(myByte, DEC);
+  Serial.println(incomingByte, DEC);
+  Serial.println(input, DEC);
   
   if(productController.AddProduct(input, "Linctagon Nasal Spray", 78.30))
     Log.Info("Successfully added product"CR);

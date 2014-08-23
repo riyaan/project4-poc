@@ -23,6 +23,7 @@ other input.*/
   {
     tmp = number - 48;
   };
+
   return tmp;
 }
 

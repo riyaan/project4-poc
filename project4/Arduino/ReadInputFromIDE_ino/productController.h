@@ -2,8 +2,6 @@
 #define productController_h
 
 #include "product.h"
-#include <Logging.h>
-
 #include <StandardCplusplus.h>
 #include <vector>
 using std::vector;
