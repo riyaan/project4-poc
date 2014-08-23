@@ -1,6 +1,4 @@
 #include <Logging.h>
-#include <StandardCplusplus.h>
-#include <vector>
 
 #include "product.h"
 #include "common.h"
@@ -10,7 +8,9 @@
 #include "costController.h"
 #include "displayController.h"
 
-using namespace std;
+#include <StandardCplusplus.h>
+#include <vector>
+using std::vector;
 
 #define LOGLEVEL LOG_LEVEL_DEBUG
 
@@ -43,27 +43,6 @@ void setup()
   };
 
   Log.Info("Arduino setup complete. "CR);
-    
-    vector<Product> v;
-  vector<Product>::iterator it = v.begin();
-
-	Product p1;
-	p1.SetRFIDTag(1);
-	p1.SetDescription("Sugar");
-	p1.SetPrice(123);
-	
-	it = v.insert(it, p1);
-
-	Log.Info("Array contains %d items."CR, v.size());
-
-
-	Product p2;
-	p2.SetRFIDTag(2);
-	p2.SetDescription("Bread");
-	p2.SetPrice(12);
-	it = v.insert(it, p2);
-
-	Log.Info("Array contains %d items."CR, v.size());
 }
 
 /*

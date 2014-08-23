@@ -8,7 +8,7 @@ class Product
     char* Description;
     int Price;
   public:
-	  Product(){}
+	  Product() {}
 	  ~Product() {}
     int GetRFIDTag() { return RFIDTag; }
     void SetRFIDTag(int value) { RFIDTag = value; } 

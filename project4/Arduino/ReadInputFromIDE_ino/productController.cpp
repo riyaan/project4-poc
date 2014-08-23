@@ -1,15 +1,27 @@
+#include "product.h"
 #include <Logging.h>
+
+#include <StandardCplusplus.h>
+#include <vector>
+using std::vector;
+
 #include "productController.h"
 
-Product ProductList[MAX];
+vector<Product> tempVector;
+vector<Product>::iterator it;
 
-ProductController::ProductController()
-{;}
+ProductController::ProductController() 
+{
+	Log.Info("Product Controller constructor");	
+}
 
 void ProductController::Initialize()
 {
   Log.Info("ProductController - Initialize"CR);
   SetState(true);
+
+	tempVector = GetProductList();
+	it = tempVector.begin();
 }
 
 bool ProductController::AddProduct(int RFIDTag, char* Description, int Price)
@@ -23,31 +35,10 @@ bool ProductController::AddProduct(int RFIDTag, char* Description, int Price)
   product.SetRFIDTag(RFIDTag);
   product.SetDescription(Description);
   product.SetPrice(Price);
-  
-  return AddItemToList(product);
+
+  it = tempVector.insert(it, product);
+
+  Log.Info("List contains %d items."CR, tempVector.size());
+
+  return true;
 }
-
-bool ProductController::AddItemToList(Product product)
-{
-	Log.Info("Adding an item to the list..."CR);  
-
-	//Product* list = GetAllProducts();  
-	//int element_count = sizeof(list)/sizeof(Product);
-  
-	Log.Debug("There are %d items in the basket"CR, element_count);
-  
-  if(element_count > 0)
-  {
-      list[element_count-1] = product;
-  }
-
-	Log.Info("... item has been added to the list"CR);  
-	
-	list = GetAllProducts();  
-	element_count = sizeof(list)/sizeof(Product);
-  
-	Log.Debug("There are %d items in the basket"CR, element_count);
-
-	return true;
-}
-    //bool RemoveProduct(int RFIDTag);
