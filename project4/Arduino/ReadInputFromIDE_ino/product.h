@@ -6,7 +6,7 @@ class Product
   private:
     int RFIDTag;
     char* Description;
-    float Price;
+    int Price;
   public:
     Product();
     int GetRFIDTag() { return RFIDTag; }
@@ -15,7 +15,7 @@ class Product
     char* GetDescription() { return Description; }
     void SetDescription(char* value) { Description = value; } 
 
-    float GetPrice() { return Price; }
+    int GetPrice() { return Price; }
     void SetPrice(int value) { Price = value; } 
 };
 

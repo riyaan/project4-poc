@@ -18,7 +18,7 @@ class ProductController
     
     bool AddItemToList(Product product);
     
-    bool AddProduct(int RFIDTag, char* Description, float Price);
+    bool AddProduct(int RFIDTag, char* Description, int Price);
     bool RemoveProduct(int RFIDTag);
     Product* GetAllProducts() { return &(ProductList[0]); }
 };

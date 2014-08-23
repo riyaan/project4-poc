@@ -6,7 +6,7 @@ SensorController::SensorController()
 
 void SensorController::Initialize()
 {
-  Log.Info("Begin SensorController Initializing... "CR);
+  Log.Info("SensorController - Initialize"CR);
   
   SetState(true);
 }

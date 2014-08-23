@@ -8,17 +8,16 @@ ProductController::ProductController()
 
 void ProductController::Initialize()
 {
-  Log.Info("Begin ProductController Initializing... "CR);
-  Log.Info("Set the state "CR);
+  Log.Info("ProductController - Initialize"CR);
   SetState(true);
 }
 
-bool ProductController::AddProduct(int RFIDTag, char* Description, float Price)
+bool ProductController::AddProduct(int RFIDTag, char* Description, int Price)
 {
-  Log.Info("Adding product."CR);
+  Log.Info("Adding product..."CR);
   Log.Debug("RFID Tag: %d"CR, RFIDTag);
   Log.Debug("Description: %s"CR, Description);
-  Log.Debug("Price: %d"CR, Price);
+  Log.Debug("Price: R%d.00"CR, Price);
   
   Product product;
   product.SetRFIDTag(RFIDTag);
