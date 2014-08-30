@@ -1,4 +1,6 @@
+#include "rfidController.h"
 #include <Logging.h>
+
 
 RfidController::RfidController() 
 {
@@ -44,16 +46,16 @@ int RfidController::CheckTag()
 void RfidController::ProcessTag() 
 {
 	// convert id to a string
-  parseTag();
+  ParseTag();
 	
 	// print it
-  printTag();
+  PrintTag();
 	
 	// check if the tag is authorized
-  if (checkTag() == 1) 
-    tagSuccess(); // if so, perform an action (blink a led, open a door, etc...)
+  if (CheckTag() == 1) 
+    RfidTagSuccess(); // if so, perform an action (blink a led, open a door, etc...)
   else
-    tagFailed(); // otherwise, inform user of failure
+    RfidTagFailed(); // otherwise, inform user of failure
 }
 
 // this function clears the rest of data on the serial, to prevent multiple scans
@@ -75,4 +77,9 @@ void RfidController::RfidTagFailed()
 {
   Serial.println("Unauthorized access!");
   delay(2000);
+}
+
+void RfidController::SetArrayElementValue(int element, int value)
+{
+	readData[element] = value;
 }

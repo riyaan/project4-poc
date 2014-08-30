@@ -6,8 +6,12 @@
 #include "productController.h"
 #include "costController.h"
 #include "displayController.h"
+#include "rfidController.h"
 #include <StandardCplusplus.h>
 #include <vector>
+#include <SoftwareSerial.h>
+
+SoftwareSerial RFID(2, 3); // RX and TX
 
 using std::vector;
 
@@ -15,21 +19,24 @@ using std::vector;
 
 int failedTries=0;
 const int BAUD_RATE = 9600;
+int i=0;
 
 SensorController sensorController;
 ProductController productController;
 CostController costController;
 DisplayController displayController;
+RfidController rfidController;
 
 void setup()
-{             
+{           
+  RFID.begin(BAUD_RATE); // start serial to RFID reader  
   Serial.begin(BAUD_RATE);//Prepare serial port for use
    
   Log.Init(LOGLEVEL, BAUD_RATE);
   Log.Info("Arduino setup... "CR);
   
   // SystemController Initialization
-  Initialize(sensorController, productController, costController);
+  Initialize(sensorController, productController, costController, rfidController);
   
   if(sensorController.GetState())
     Log.Info("SensorController initialized successfully"CR);
@@ -40,6 +47,9 @@ void setup()
   if(costController.GetState())
     Log.Info("Cost controller initialized successfully"CR);
 
+  if(rfidController.GetState())
+    Log.Info("Rfid controller initialized successfully"CR);
+
   Log.Info("Arduino setup complete. "CR);
 }
 
@@ -48,8 +58,8 @@ Begin loop
 */
 void loop()
 {
-  Log.Info("Arduino loop"CR);
-
+ //Log.Info("Arduino loop"CR);
+/*
   int input=0;
   int myByte=0;
   int incomingByte=0;
@@ -91,6 +101,27 @@ void loop()
   } 
   
   Log.Info("Session total cost: %d"CR, costController.GetSessionTotalCost());
+  */
+
+  /*
+  ======== RFID Functionality ================
+  */
+  if (RFID.available() > 0) 
+  {
+     i = RFID.read();
+     if(i == 2){
+         rfidController.SetCounter(0);
+     }
+     else if(i == 3){
+       rfidController.ProcessTag();
+       rfidController.ClearSerial();
+       rfidController.SetCounter(-1);
+     }
+     else if(rfidController.GetCounter() >= 0){
+       rfidController.SetArrayElementValue(rfidController.GetCounter(), i);
+       rfidController.SetCounter(rfidController.GetCounter()+1);
+     }
+  }
 }
 
 /*
