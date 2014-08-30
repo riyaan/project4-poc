@@ -13,6 +13,7 @@ class CostController
     bool SetState(bool value) { State = value; }
 	void IncrementSessionTotalCost(int cost);
 	void DecrementSessionTotalCost(int cost);
+	int GetSessionTotalCost() { return SessionTotalCost; }
 };
 
 #endif

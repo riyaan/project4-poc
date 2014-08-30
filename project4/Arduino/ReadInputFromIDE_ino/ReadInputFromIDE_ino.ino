@@ -33,19 +33,13 @@ void setup()
   Initialize(sensorController, productController, costController);
   
   if(sensorController.GetState())
-  {
     Log.Info("SensorController initialized successfully"CR);
-  };
   
   if(productController.GetState())
-  {
     Log.Info("Product controller initialized successfully"CR);
-  };
 
   if(costController.GetState())
-  {
     Log.Info("Cost controller initialized successfully"CR);
-  };
 
   Log.Info("Arduino setup complete. "CR);
 }
@@ -75,11 +69,11 @@ void loop()
 
   // Check if the item is in the basket already. If so remove it.
   // This simulates the 'RemoveListener'
-  if(productController.FindProductUsingRFIDTag(int RFIDTag))
+  if(productController.FindProductUsingRFIDTag(input))
   {
 	// remove the product
 	  Log.Info("Found a match."CR);
-	  if(RemoveProduct(RFIDTag))
+	  if(productController.RemoveProduct(input))
 		  Log.Info("Item successfully removed."CR);
 	  else
 		  Log.Info("Something went wrong trying to remove the item."CR);
@@ -95,7 +89,9 @@ void loop()
 	}
 	else
 		Log.Info("Failed to add the product."CR);
-  }  
+  } 
+  
+  Log.Info("Session total cost: %d"CR, costController.GetSessionTotalCost());
 }
 
 /*
