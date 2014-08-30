@@ -2,9 +2,9 @@
 #include <Logging.h>
 #include <StandardCplusplus.h>
 #include <vector>
-using std::vector;
-
 #include "productController.h"
+
+using std::vector;
 
 vector<Product> tempVector;
 vector<Product>::iterator it;

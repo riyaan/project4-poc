@@ -1,5 +1,4 @@
 #include <Logging.h>
-
 #include "product.h"
 #include "common.h"
 #include "systemController.h"
@@ -7,9 +6,9 @@
 #include "productController.h"
 #include "costController.h"
 #include "displayController.h"
-
 #include <StandardCplusplus.h>
 #include <vector>
+
 using std::vector;
 
 #define LOGLEVEL LOG_LEVEL_DEBUG
