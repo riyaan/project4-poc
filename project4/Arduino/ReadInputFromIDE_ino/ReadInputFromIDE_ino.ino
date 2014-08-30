@@ -30,7 +30,7 @@ void setup()
   Log.Info("Arduino setup... "CR);
   
   // SystemController Initialization
-  Initialize(sensorController, productController);
+  Initialize(sensorController, productController, costController);
   
   if(sensorController.GetState())
   {
@@ -40,6 +40,11 @@ void setup()
   if(productController.GetState())
   {
     Log.Info("Product controller initialized successfully"CR);
+  };
+
+  if(costController.GetState())
+  {
+    Log.Info("Cost controller initialized successfully"CR);
   };
 
   Log.Info("Arduino setup complete. "CR);
@@ -67,13 +72,30 @@ void loop()
     incomingByte = AsciiToBinary(myByte);
     input = FetchNextCharacterAndAddToAccumulator(incomingByte, input, p);
   };
-  
-  // check if the item is already in the list. if so, then remove it.
 
-  if(productController.AddProduct(input, "Linctagon Nasal Spray", 78.30))
-    Log.Info("Successfully added product"CR);
+  // Check if the item is in the basket already. If so remove it.
+  // This simulates the 'RemoveListener'
+  if(productController.FindProductUsingRFIDTag(int RFIDTag))
+  {
+	// remove the product
+	  Log.Info("Found a match."CR);
+	  if(RemoveProduct(RFIDTag))
+		  Log.Info("Item successfully removed."CR);
+	  else
+		  Log.Info("Something went wrong trying to remove the item."CR);
+
+	costController.DecrementSessionTotalCost(50);
+  }
   else
-    Log.Info("Failed to add the product."CR);
+  {
+	if(productController.AddProduct(input, "Linctagon Nasal Spray", 50))
+	{    
+		costController.IncrementSessionTotalCost(50);
+		Log.Info("Successfully added product"CR);
+	}
+	else
+		Log.Info("Failed to add the product."CR);
+  }  
 }
 
 /*

@@ -6,12 +6,13 @@
 #include "costController.h"
 #include "displayController.h"
 
-bool Initialize(SensorController & sc, ProductController & pc)
+bool Initialize(SensorController & sc, ProductController & pc, CostController & cc)
 {
   Log.Info("SystemController - Initialize"CR);
 
   sc.Initialize();
   pc.Initialize();
+  cc.Initialize();
   
   return true;
 }

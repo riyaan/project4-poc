@@ -4,9 +4,15 @@
 class CostController
 {
   private:
+	bool State;
+	int SessionTotalCost;
   public:
-    CostController();
-    bool Initialize();
+	CostController();
+    void Initialize();
+    bool GetState() { return State; }
+    bool SetState(bool value) { State = value; }
+	void IncrementSessionTotalCost(int cost);
+	void DecrementSessionTotalCost(int cost);
 };
 
 #endif

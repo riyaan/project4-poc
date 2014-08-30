@@ -27,7 +27,7 @@ void ProductController::Initialize()
 
 bool ProductController::AddProduct(int RFIDTag, char* Description, int Price)
 {
-  Log.Info("Check if the product exists. If so, then remove it"CR);
+  /*Log.Info("Check if the product exists. If so, then remove it"CR);
   if(FindProductUsingRFIDTag(RFIDTag))
   {
 	  Log.Info("Found a match."CR);
@@ -37,7 +37,7 @@ bool ProductController::AddProduct(int RFIDTag, char* Description, int Price)
 		  Log.Info("Something went wrong trying to remove the item."CR);
 
 	  return true;
-  }
+  }*/
 
   /*Log.Info("Adding product..."CR);
   Log.Debug("RFID Tag: %d"CR, RFIDTag);
