@@ -1,9 +1,7 @@
 #include "product.h"
 #include <Logging.h>
-
 #include <StandardCplusplus.h>
 #include <vector>
-#include <iterator>
 using std::vector;
 
 #include "productController.h"
@@ -18,8 +16,8 @@ ProductController::ProductController()
 
 void ProductController::Initialize()
 {
-  Log.Info("ProductController - Initialize"CR);
-  SetState(true);
+	Log.Info("ProductController - Initialize"CR);
+	SetState(true);
 
 	tempVector = GetProductList();
 	it = tempVector.begin();
@@ -27,18 +25,6 @@ void ProductController::Initialize()
 
 bool ProductController::AddProduct(int RFIDTag, char* Description, int Price)
 {
-  /*Log.Info("Check if the product exists. If so, then remove it"CR);
-  if(FindProductUsingRFIDTag(RFIDTag))
-  {
-	  Log.Info("Found a match."CR);
-	  if(RemoveProduct(RFIDTag))
-		  Log.Info("Item successfully removed."CR);
-	  else
-		  Log.Info("Something went wrong trying to remove the item."CR);
-
-	  return true;
-  }*/
-
   /*Log.Info("Adding product..."CR);
   Log.Debug("RFID Tag: %d"CR, RFIDTag);
   Log.Debug("Description: %s"CR, Description);
@@ -70,6 +56,8 @@ bool ProductController::RemoveProduct(int RFIDTag)
 			return true;
 		}
 	}
+
+	return false;
 }
 
 bool ProductController::FindProductUsingRFIDTag(int RFIDTag)
