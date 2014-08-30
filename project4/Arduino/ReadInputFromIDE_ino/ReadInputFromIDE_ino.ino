@@ -60,34 +60,20 @@ void loop()
   //do nothing (except continue to check) until something has been sent.
   while (Serial.available() == 0) {;};
   
-  while ((Serial.available() > 0) || (failedTries < 1000))
+  while ((Serial.available() > 0) || (failedTries < 10000))
   {
     int *p=&failedTries;
 	myByte = Serial.read();
     incomingByte = AsciiToBinary(myByte);
     input = FetchNextCharacterAndAddToAccumulator(incomingByte, input, p);
-  };  
+  };
   
-  Log.Debug("Input byte: %d"CR, myByte);
-  Log.Debug("After AsciiToBinary: %d"CR, incomingByte);
-  Log.Debug("After FNC: %d"CR, input);
+  // check if the item is already in the list. if so, then remove it.
 
-  Serial.println(myByte, DEC);
-  Serial.println(incomingByte, DEC);
-  Serial.println(input, DEC);
-  
   if(productController.AddProduct(input, "Linctagon Nasal Spray", 78.30))
     Log.Info("Successfully added product"CR);
   else
     Log.Info("Failed to add the product."CR);
-  
-  //Serial.print("Two times ");
-  //Serial.print(input);
-  //Serial.print(" is ");
-  
-  //input = input * 2;
-  
-  //Serial.println(input);
 }
 
 /*
