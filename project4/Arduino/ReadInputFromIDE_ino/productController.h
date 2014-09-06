@@ -17,9 +17,9 @@ class ProductController
     void Initialize();
     bool GetState() { return State; }
     bool SetState(bool value) { State = value; }
-    bool AddProduct(int RFIDTag, char* Description, int Price);
-    bool RemoveProduct(int RFIDTag);
-	bool FindProductUsingRFIDTag(int RFIDTag);
+    bool AddProduct(char* RFIDTag, char* Description, int Price);
+    bool RemoveProduct(char* RFIDTag);
+	bool FindProductUsingRFIDTag(char* RFIDTag);
 	vector<Product> GetProductList() { return ProductList;  }
 
 };

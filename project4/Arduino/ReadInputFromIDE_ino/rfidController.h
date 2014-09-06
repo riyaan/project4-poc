@@ -16,7 +16,7 @@ class RfidController
 			// add your own tag IDs here
 			authorizedTags[0] = "8500908889";
 			authorizedTags[1] = "8500904E47";
-			//authorizedTags[2] = "17001FBEAF";
+			authorizedTags[2] = "17001FBEAF";
 		}
 
 	public:

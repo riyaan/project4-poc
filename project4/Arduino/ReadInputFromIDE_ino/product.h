@@ -4,14 +4,14 @@
 class Product
 {
   private:
-    int RFIDTag;
+    char* RFIDTag;
     char* Description;
     int Price;
   public:
 	  Product() {}
 	  ~Product() {}
-    int GetRFIDTag() { return RFIDTag; }
-    void SetRFIDTag(int value) { RFIDTag = value; } 
+    char* GetRFIDTag() { return RFIDTag; }
+    void SetRFIDTag(char* value) { RFIDTag = value; } 
 
     char* GetDescription() { return Description; }
     void SetDescription(char* value) { Description = value; } 

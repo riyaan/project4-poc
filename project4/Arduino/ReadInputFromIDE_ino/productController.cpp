@@ -19,11 +19,13 @@ void ProductController::Initialize()
 	Log.Info("ProductController - Initialize"CR);
 	SetState(true);
 
+
+
 	tempVector = GetProductList();
 	it = tempVector.begin();
 }
 
-bool ProductController::AddProduct(int RFIDTag, char* Description, int Price)
+bool ProductController::AddProduct(char* RFIDTag, char* Description, int Price)
 {
   /*Log.Info("Adding product..."CR);
   Log.Debug("RFID Tag: %d"CR, RFIDTag);
@@ -42,7 +44,7 @@ bool ProductController::AddProduct(int RFIDTag, char* Description, int Price)
   return true;
 }
 
-bool ProductController::RemoveProduct(int RFIDTag)
+bool ProductController::RemoveProduct(char* RFIDTag)
 {
 	it = tempVector.begin();
 
@@ -60,7 +62,7 @@ bool ProductController::RemoveProduct(int RFIDTag)
 	return false;
 }
 
-bool ProductController::FindProductUsingRFIDTag(int RFIDTag)
+bool ProductController::FindProductUsingRFIDTag(char* RFIDTag)
 {	
 	Log.Info("FindProductUsingRFIDTag Begin"CR);
 
