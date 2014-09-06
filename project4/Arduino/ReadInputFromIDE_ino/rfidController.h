@@ -1,6 +1,8 @@
 #ifndef rfidController_h
 #define rfidController_h
 
+#include "productController.h"
+
 class RfidController
 {
 	private:
@@ -19,9 +21,11 @@ class RfidController
 			authorizedTags[2] = "17001FBEAF";
 		}
 
+		ProductController productController;
+
 	public:
-		RfidController();
-		void Initialize();
+		RfidController();		
+		void Initialize(ProductController & pc);
 		bool GetState() { return State; }
 		bool SetState(bool value) { State = value; }
 		int GetCounter() { return counter; }

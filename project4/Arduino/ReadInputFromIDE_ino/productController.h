@@ -20,14 +20,12 @@ class ProductController
     bool SetState(bool value) { State = value; }
     bool AddProduct(char* RFIDTag, char* Description, int Price);
     bool RemoveProduct(char* RFIDTag);
-	bool FindProductUsingRFIDTag(char* RFIDTag);
+	Product FindProductUsingRFIDTag(char* RFIDTag);
 	vector<Product> GetProductList() { return ProductList;  }
 
 	// Shop functionality
-	bool AddShopProducts(); //char* RFIDTag, char* Description, int Price);
+	bool AddShopProducts();
 	vector<Product> GetAllShopProducts() { return AllShopProducts;  }
-	//Product whiteSugar = new Product("8500908889", "Selati,White Sugar 2.5kg", 28);
-
 };
 
 #endif

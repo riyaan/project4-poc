@@ -36,14 +36,12 @@ bool ProductController::AddShopProducts()//(char* RFIDTag, char* Description, in
 	Product whiteSugar("8500908889", "Selati,White Sugar 2.5kg", 28);
 	Product regularCoke("8500904E47", "Coca-cola,Regular 2 Litre", 15);
 	Product omo("17001FBEAF", "Omo,Multi Active Flex Washing Powder 2kg", 54);
-  /*Product product;
-  product.SetRFIDTag(RFIDTag);
-  product.SetDescription(Description);
-  product.SetPrice(Price);*/
 
   shopIt = shopVector.insert(shopIt, whiteSugar);
   shopIt = shopVector.insert(shopIt, regularCoke);
   shopIt = shopVector.insert(shopIt, omo);
+
+  Log.Info("Store contains %d items."CR, shopVector.size());
 
   return true;
 }
@@ -85,17 +83,31 @@ bool ProductController::RemoveProduct(char* RFIDTag)
 	return false;
 }
 
-bool ProductController::FindProductUsingRFIDTag(char* RFIDTag)
-{	
+Product ProductController::FindProductUsingRFIDTag(char* RFIDTag)
+{
 	Log.Info("FindProductUsingRFIDTag Begin"CR);
+	//Log.Info("Store contains %d items."CR, shopVector.size());
 
-	for(int i=0; i<tempVector.size(); i++)
+	for(int i=0; i<shopVector.size(); i++)
 	{
-		if(tempVector[i].GetRFIDTag() == RFIDTag)		
-			return true;
+		char* rfidTag = shopVector[i].GetRFIDTag();
+		/*Log.Info("Shop item tag %s."CR, rfidTag);
+		Log.Info("Query item tag %s."CR, RFIDTag);*/
+
+		if(strcmp(rfidTag, RFIDTag) == 0)	
+		{
+			//Log.Info("Match found."CR);			
+			return shopVector[i];			
+		}
 	}
 	
 	Log.Info("FindProductUsingRFIDTag End"CR);
 
-	return false;
+	// A quick work-around as you cannot return a null object only a null pointer.
+	Product product;
+	product.SetRFIDTag("-1");
+	product.SetDescription("-1");
+	product.SetPrice(1);
+
+	return product;
 }
