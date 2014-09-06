@@ -108,11 +108,14 @@ void loop()
   */
   if (RFID.available() > 0) 
   {
+	 delay(100);
+
      i = RFID.read();
      if(i == 2){
          rfidController.SetCounter(0);
      }
      else if(i == 3){
+	   RFID.flush(); // stops multiple reads
        rfidController.ProcessTag();
        rfidController.ClearSerial();
        rfidController.SetCounter(-1);

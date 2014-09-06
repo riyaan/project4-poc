@@ -32,13 +32,13 @@ void RfidController::PrintTag()
 
 int RfidController::CheckTag()
 {
-  /*int i;
+	int i;
   
   for (i = 0; i < 4; ++i) {
     if (strcmp(authorizedTags[i], tagId) == 0) {
       return 1;
     }
-  }*/
+  }
   return 0;
 }
 
