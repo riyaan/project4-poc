@@ -9,6 +9,7 @@ class Product
     int Price;
   public:
 	  Product() {}
+	  Product(char* rfidTag, char* description, int price) { RFIDTag = rfidTag; Description = description; Price = price; }
 	  ~Product() {}
     char* GetRFIDTag() { return RFIDTag; }
     void SetRFIDTag(char* value) { RFIDTag = value; } 

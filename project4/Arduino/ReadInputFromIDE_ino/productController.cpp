@@ -9,6 +9,9 @@ using std::vector;
 vector<Product> tempVector;
 vector<Product>::iterator it;
 
+vector<Product> shopVector;
+vector<Product>::iterator shopIt;
+
 ProductController::ProductController() 
 {
 	Log.Info("Product Controller constructor");	
@@ -17,12 +20,32 @@ ProductController::ProductController()
 void ProductController::Initialize()
 {
 	Log.Info("ProductController - Initialize"CR);
-	SetState(true);
-
-
+	SetState(true);	
 
 	tempVector = GetProductList();
 	it = tempVector.begin();
+
+	shopVector = GetAllShopProducts();
+	shopIt = shopVector.begin();
+
+	AddShopProducts();
+}
+
+bool ProductController::AddShopProducts()//(char* RFIDTag, char* Description, int Price)
+{ 
+	Product whiteSugar("8500908889", "Selati,White Sugar 2.5kg", 28);
+	Product regularCoke("8500904E47", "Coca-cola,Regular 2 Litre", 15);
+	Product omo("17001FBEAF", "Omo,Multi Active Flex Washing Powder 2kg", 54);
+  /*Product product;
+  product.SetRFIDTag(RFIDTag);
+  product.SetDescription(Description);
+  product.SetPrice(Price);*/
+
+  shopIt = shopVector.insert(shopIt, whiteSugar);
+  shopIt = shopVector.insert(shopIt, regularCoke);
+  shopIt = shopVector.insert(shopIt, omo);
+
+  return true;
 }
 
 bool ProductController::AddProduct(char* RFIDTag, char* Description, int Price)

@@ -11,6 +11,7 @@ class ProductController
   private:
     bool State;
     vector<Product> ProductList;
+	vector<Product> AllShopProducts;
 
   public:
     ProductController();
@@ -21,6 +22,11 @@ class ProductController
     bool RemoveProduct(char* RFIDTag);
 	bool FindProductUsingRFIDTag(char* RFIDTag);
 	vector<Product> GetProductList() { return ProductList;  }
+
+	// Shop functionality
+	bool AddShopProducts(); //char* RFIDTag, char* Description, int Price);
+	vector<Product> GetAllShopProducts() { return AllShopProducts;  }
+	//Product whiteSugar = new Product("8500908889", "Selati,White Sugar 2.5kg", 28);
 
 };
 
