@@ -11,6 +11,7 @@ void RfidController::Initialize()
 {
 	Log.Info("RfidController - Initialize"CR);
 	SetState(true);
+	initAuthorizedTags();
 }
 
 // convert the int values read from serial to ASCII chars

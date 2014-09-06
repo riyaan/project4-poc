@@ -11,6 +11,14 @@ class RfidController
 		char tagId[11]; // final tag ID converted to a string
 		char* authorizedTags[4]; // array to hold the list of authorized tags
 
+		// fills the list of authorzied tags
+		void initAuthorizedTags() {
+			// add your own tag IDs here
+			authorizedTags[0] = "8500908889";
+			authorizedTags[1] = "8500904E47";
+			//authorizedTags[2] = "17001FBEAF";
+		}
+
 	public:
 		RfidController();
 		void Initialize();
