@@ -26,6 +26,8 @@ ProductController productController;
 CostController costController;
 DisplayController displayController;
 RfidController rfidController;
+char* tagId;
+Product product;
 
 void setup()
 {           
@@ -65,19 +67,33 @@ void loop()
      }
      else if(i == 3){
 	   RFID.flush(); // stops multiple reads
-       char* tagId = rfidController.ProcessTag();
+       tagId = rfidController.ProcessTag();
 
-	   Product product = productController.FindProductUsingRFIDTag(tagId, 1);
+	   product = productController.FindProductUsingRFIDTag(tagId, 1);
 
 	   if(strcmp(product.GetRFIDTag(), "-1") == 0) // Check the shop inventory for the item details
 		   Log.Info("Item does not have any RFID information."CR);
 	   else		
+	   {
 		   Log.Info("Item contains RFID information."CR);
+		   ProcessItem();
+	   }
 
        rfidController.ClearSerial();
-       rfidController.SetCounter(-1);
+       rfidController.SetCounter(-1);	   
 
-	   // Check the user's basket. If the item is already present, then remove it.
+	   Log.Info("Session total cost: %d"CR, costController.GetSessionTotalCost());
+     }
+     else if(rfidController.GetCounter() >= 0){
+       rfidController.SetArrayElementValue(rfidController.GetCounter(), i);
+       rfidController.SetCounter(rfidController.GetCounter()+1);
+     }
+  }
+}
+
+void ProcessItem()
+{
+// Check the user's basket. If the item is already present, then remove it.
 		Product shoppingBasketProduct = productController.FindProductUsingRFIDTag(tagId, 0);
 		if(strcmp(shoppingBasketProduct.GetRFIDTag(), "-1") == 0)
 		{
@@ -101,12 +117,4 @@ void loop()
 
 			costController.DecrementSessionTotalCost(shoppingBasketProduct.GetPrice());
 		}
-
-	   Log.Info("Session total cost: %d"CR, costController.GetSessionTotalCost());
-     }
-     else if(rfidController.GetCounter() >= 0){
-       rfidController.SetArrayElementValue(rfidController.GetCounter(), i);
-       rfidController.SetCounter(rfidController.GetCounter()+1);
-     }
-  }
 }

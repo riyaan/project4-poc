@@ -39,24 +39,15 @@ bool ProductController::AddShopProducts()//(char* RFIDTag, char* Description, in
 	Product regularCoke("8500904E47", "Coca-cola_Regular 2 Litre", 15);
 	Product omo("17001FBEAF", "Omo_Multi Active Flex Washing Powder 2kg", 54);
 
-	Log.Info("Before Add - Store contains %d items."CR, shopVector.size());
-
   shopIt = shopVector.insert(shopIt, whiteSugar);
   shopIt = shopVector.insert(shopIt, regularCoke);
   shopIt = shopVector.insert(shopIt, omo);
-
-  Log.Info("AFter Add - Store contains %d items."CR, shopVector.size());
 
   return true;
 }
 
 bool ProductController::AddProduct(char* RFIDTag, char* Description, int Price)
-{
-  /*Log.Info("Adding product..."CR);
-  Log.Debug("RFID Tag: %d"CR, RFIDTag);
-  Log.Debug("Description: %s"CR, Description);
-  Log.Debug("Price: R%d.00"CR, Price);*/
-  
+{ 
   Product product;
   product.SetRFIDTag(RFIDTag);
   product.SetDescription(Description);
@@ -100,9 +91,6 @@ Product ProductController::FindProductUsingRFIDTag(char* RFIDTag, bool queryShop
 	for(int i=0; i<temp.size(); i++)
 	{
 		char* rfidTag = temp[i].GetRFIDTag();
-		Log.Info("Item tag %s."CR, rfidTag);
-		Log.Info("Query item tag %s."CR, RFIDTag);
-
 		if(strcmp(rfidTag, RFIDTag) == 0)	
 		{
 			Log.Info("Match found."CR);			
@@ -113,10 +101,7 @@ Product ProductController::FindProductUsingRFIDTag(char* RFIDTag, bool queryShop
 	Log.Info("FindProductUsingRFIDTag End"CR);
 
 	// A quick work-around as you cannot return a null object only a null pointer.
-	Product product;
-	product.SetRFIDTag("-1");
-	product.SetDescription("-1");
-	product.SetPrice(1);
+	Product product; product.SetRFIDTag("-1"); 	product.SetDescription("-1"); 	product.SetPrice(1);
 
 	return product;
 }
