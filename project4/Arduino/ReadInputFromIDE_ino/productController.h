@@ -20,8 +20,7 @@ class ProductController
     bool SetState(bool value) { State = value; }
     bool AddProduct(char* RFIDTag, char* Description, int Price);
     bool RemoveProduct(char* RFIDTag);
-	Product FindProductUsingRFIDTag(char* RFIDTag);
-	Product FindProductInShoppingBasketUsingRFIDTag(char* RFIDTag);
+	Product FindProductUsingRFIDTag(char* RFIDTag, bool queryShopInventory);
 	vector<Product> GetProductList() { return ProductList;  }
 
 	// Shop functionality

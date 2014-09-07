@@ -87,54 +87,30 @@ bool ProductController::RemoveProduct(char* RFIDTag)
 	return false;
 }
 
-Product ProductController::FindProductUsingRFIDTag(char* RFIDTag)
+Product ProductController::FindProductUsingRFIDTag(char* RFIDTag, bool queryShopInventory)
 {
 	Log.Info("FindProductUsingRFIDTag Begin"CR);
-	Log.Info("Store contains %d items."CR, shopVector.size());
 
-	for(int i=0; i<shopVector.size(); i++)
+	vector<Product> temp;
+	if(queryShopInventory)
+		temp = shopVector;
+	else
+		temp = tempVector;
+
+	for(int i=0; i<temp.size(); i++)
 	{
-		char* rfidTag = shopVector[i].GetRFIDTag();
-		Log.Info("Shop item tag %s."CR, rfidTag);
+		char* rfidTag = temp[i].GetRFIDTag();
+		Log.Info("Item tag %s."CR, rfidTag);
 		Log.Info("Query item tag %s."CR, RFIDTag);
 
 		if(strcmp(rfidTag, RFIDTag) == 0)	
 		{
 			Log.Info("Match found."CR);			
-			return shopVector[i];			
+			return temp[i];			
 		}
 	}
 	
 	Log.Info("FindProductUsingRFIDTag End"CR);
-
-	// A quick work-around as you cannot return a null object only a null pointer.
-	Product product;
-	product.SetRFIDTag("-1");
-	product.SetDescription("-1");
-	product.SetPrice(1);
-
-	return product;
-}
-
-Product ProductController::FindProductInShoppingBasketUsingRFIDTag(char* RFIDTag)
-{
-	Log.Info("FindProductInShoppingBasketUsingRFIDTag Begin"CR);
-	Log.Info("Shopping basket contains %d items."CR, tempVector.size());
-
-	for(int i=0; i<tempVector.size(); i++)
-	{
-		char* rfidTag = tempVector[i].GetRFIDTag();
-		Log.Info("Basket item tag %s."CR, rfidTag);
-		Log.Info("Query item tag %s."CR, RFIDTag);
-
-		if(strcmp(rfidTag, RFIDTag) == 0)	
-		{
-			Log.Info("Match found."CR);			
-			return tempVector[i];			
-		}
-	}
-	
-	Log.Info("FindProductInShoppingBasketUsingRFIDTag End"CR);
 
 	// A quick work-around as you cannot return a null object only a null pointer.
 	Product product;
