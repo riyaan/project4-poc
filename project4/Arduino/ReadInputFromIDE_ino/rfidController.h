@@ -1,7 +1,7 @@
 #ifndef rfidController_h
 #define rfidController_h
 
-#include "productController.h"
+#include "costController.h"
 
 class RfidController
 {
@@ -11,21 +11,21 @@ class RfidController
 		int counter;
 		int readData[10];
 		char tagId[11]; // final tag ID converted to a string
-		char* authorizedTags[4]; // array to hold the list of authorized tags
+		//char* authorizedTags[4]; // array to hold the list of authorized tags
 
-		// fills the list of authorzied tags
-		void initAuthorizedTags() {
-			// add your own tag IDs here
-			authorizedTags[0] = "8500908889";
-			authorizedTags[1] = "8500904E47";
-			authorizedTags[2] = "17001FBEAF";
-		}
+		//// fills the list of authorzied tags
+		//void initAuthorizedTags() {
+		//	// add your own tag IDs here
+		//	authorizedTags[0] = "8500908889";
+		//	authorizedTags[1] = "8500904E47";
+		//	authorizedTags[2] = "17001FBEAF";
+		//}
 
-		ProductController productController;
+		CostController costController;
 
 	public:
 		RfidController();		
-		void Initialize(ProductController & pc);
+		void Initialize(CostController & cc);
 		bool GetState() { return State; }
 		bool SetState(bool value) { State = value; }
 		int GetCounter() { return counter; }
@@ -33,8 +33,8 @@ class RfidController
 		void SetArrayElementValue(int element, int value);
 		void ParseTag();
 		void PrintTag();
-		int CheckTag();
-		void ProcessTag();
+		char* CheckTag();
+		char* ProcessTag();
 		void ClearSerial();
 		void RfidTagSuccess();
 		void RfidTagFailed();

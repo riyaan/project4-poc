@@ -53,59 +53,8 @@ void setup()
   Log.Info("Arduino setup complete. "CR);
 }
 
-/*
-Begin loop
-*/
 void loop()
 {
- //Log.Info("Arduino loop"CR);
-/*
-  int input=0;
-  int myByte=0;
-  int incomingByte=0;
-  failedTries=0;
-  
-  //do nothing (except continue to check) until something has been sent.
-  while (Serial.available() == 0) {;};
-  
-  while ((Serial.available() > 0) || (failedTries < 10000))
-  {
-    int *p=&failedTries;
-	myByte = Serial.read();
-    incomingByte = AsciiToBinary(myByte);
-    input = FetchNextCharacterAndAddToAccumulator(incomingByte, input, p);
-  };
-
-  // Check if the item is in the basket already. If so remove it.
-  // This simulates the 'RemoveListener'
-  if(productController.FindProductUsingRFIDTag(input))
-  {
-	// remove the product
-	  Log.Info("Found a match."CR);
-	  if(productController.RemoveProduct(input))
-		  Log.Info("Item successfully removed."CR);
-	  else
-		  Log.Info("Something went wrong trying to remove the item."CR);
-
-	costController.DecrementSessionTotalCost(50);
-  }
-  else
-  {
-	if(productController.AddProduct(input, "Linctagon Nasal Spray", 50))
-	{    
-		costController.IncrementSessionTotalCost(50);
-		Log.Info("Successfully added product"CR);
-	}
-	else
-		Log.Info("Failed to add the product."CR);
-  } 
-  
-  Log.Info("Session total cost: %d"CR, costController.GetSessionTotalCost());
-  */
-
-  /*
-  ======== RFID Functionality ================
-  */
   if (RFID.available() > 0) 
   {
 	 delay(100);
@@ -116,9 +65,52 @@ void loop()
      }
      else if(i == 3){
 	   RFID.flush(); // stops multiple reads
-       rfidController.ProcessTag();
+       char* tagId = rfidController.ProcessTag();
+
+	   Product product = productController.FindProductUsingRFIDTag(tagId);
+	//Log.Debug("RFID Tag: %s"CR, product.GetRFIDTag());
+
+	if(strcmp(product.GetRFIDTag(), "-1") == 0) // Check the shop inventory for the item details
+	{
+		Log.Info("Item does not have any RFID information."CR);
+		//return "-1";
+	}
+	else
+	{		
+		Log.Info("Item contains RFID information."CR);
+		//return tagId;
+	}
+
+
        rfidController.ClearSerial();
        rfidController.SetCounter(-1);
+
+	   /*// Check the user's basket. If the item is already present, then remove it.
+		Product shoppingBasketProduct = productController.FindProductInShoppingBasketUsingRFIDTag(tagId);
+		if(strcmp(shoppingBasketProduct.GetRFIDTag(), "-1") == 0)
+		{
+			Product product = productController.FindProductUsingRFIDTag(tagId);
+			if(productController.AddProduct(product.GetRFIDTag(), product.GetDescription(), product.GetPrice()))
+			{    
+				costController.IncrementSessionTotalCost(product.GetPrice());
+				Log.Info("Successfully added product"CR);
+			}
+			else
+				Log.Info("Failed to add the product."CR);
+		}
+		else
+		{			
+			// remove the product
+			Log.Info("Found a match."CR);
+			if(productController.RemoveProduct(shoppingBasketProduct.GetRFIDTag()))
+				Log.Info("Item successfully removed."CR);
+			else
+				Log.Info("Something went wrong trying to remove the item."CR);
+
+			costController.DecrementSessionTotalCost(shoppingBasketProduct.GetPrice());
+		}*/
+
+	   Log.Info("Session total cost: %d"CR, costController.GetSessionTotalCost());
      }
      else if(rfidController.GetCounter() >= 0){
        rfidController.SetArrayElementValue(rfidController.GetCounter(), i);
@@ -126,7 +118,3 @@ void loop()
      }
   }
 }
-
-/*
-End loop
-*/

@@ -21,6 +21,7 @@ class ProductController
     bool AddProduct(char* RFIDTag, char* Description, int Price);
     bool RemoveProduct(char* RFIDTag);
 	Product FindProductUsingRFIDTag(char* RFIDTag);
+	Product FindProductInShoppingBasketUsingRFIDTag(char* RFIDTag);
 	vector<Product> GetProductList() { return ProductList;  }
 
 	// Shop functionality

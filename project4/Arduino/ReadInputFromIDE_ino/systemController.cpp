@@ -14,7 +14,7 @@ bool Initialize(SensorController & sc, ProductController & pc, CostController & 
   sc.Initialize();
   pc.Initialize();
   cc.Initialize();
-  rc.Initialize(pc);
+  rc.Initialize(cc);
   
   return true;
 }

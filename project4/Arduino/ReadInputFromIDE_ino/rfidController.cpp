@@ -1,5 +1,4 @@
 #include "rfidController.h"
-#include "productController.h"
 #include <Logging.h>
 
 
@@ -8,12 +7,12 @@ RfidController::RfidController()
 	Log.Info("Rfid Controller constructor");	
 }
 
-void RfidController::Initialize(ProductController & pc)
+void RfidController::Initialize(CostController & cc)
 {
 	Log.Info("RfidController - Initialize"CR);
 	SetState(true);
-	initAuthorizedTags();
-	productController = pc;
+	//initAuthorizedTags();
+	costController = cc;
 }
 
 // convert the int values read from serial to ASCII chars
@@ -33,11 +32,12 @@ void RfidController::PrintTag()
   Serial.println(tagId);
 }
 
-int RfidController::CheckTag()
+char* RfidController::CheckTag()
 {
 	Log.Info("CheckTag Start"CR);
 	Log.Info("RFID: %s"CR, tagId);
 
+	return "tagId";
 	/*int i;
   
   for (i = 0; i < 4; ++i) {
@@ -48,18 +48,26 @@ int RfidController::CheckTag()
 
 	//Log.Info("Store contains %d items."CR, productController.GetAllShopProducts().size());	
 
-	Product product = productController.FindProductUsingRFIDTag(tagId);
-	//Log.Debug("RFID Tag: %s"CR, product.GetRFIDTag());
+	//Product product = productController.FindProductUsingRFIDTag(tagId);
+	////Log.Debug("RFID Tag: %s"CR, product.GetRFIDTag());
 
-	if(strcmp(product.GetRFIDTag(), "-1") == 0)
-		return 0;
-	else
-		return 1;
+	//if(strcmp(product.GetRFIDTag(), "-1") == 0) // Check the shop inventory for the item details
+	//{
+	//	Log.Info("Item does not have any RFID information."CR);
+	//	return "-1";
+	//}
+	//else
+	//{		
+	//	Log.Info("Item contains RFID information."CR);
+	//	return tagId;
+	//}
 }
 
 // once a whole tag is read, process it
-void RfidController::ProcessTag() 
+char* RfidController::ProcessTag() 
 {
+	Log.Info("ProcessTag() Start"CR);
+
 	// convert id to a string
   ParseTag();
 	
@@ -67,10 +75,16 @@ void RfidController::ProcessTag()
   PrintTag();
 	
 	// check if the tag is authorized
-  if (CheckTag() == 1) 
-    RfidTagSuccess(); // if so, perform an action (blink a led, open a door, etc...)
-  else
-    RfidTagFailed(); // otherwise, inform user of failure
+  //if (CheckTag() == 1) 
+  //{
+  //  RfidTagSuccess(); // if so, perform an action (blink a led, open a door, etc...)
+  //}
+  //else
+  //{
+  //  RfidTagFailed(); // otherwise, inform user of failure
+  //}
+  //return CheckTag();
+  return tagId;
 }
 
 // this function clears the rest of data on the serial, to prevent multiple scans
