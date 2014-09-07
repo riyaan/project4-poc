@@ -82,7 +82,8 @@ void loop()
        rfidController.ClearSerial();
        rfidController.SetCounter(-1);	   
 
-	   Log.Info("Session total cost: %d"CR, costController.GetSessionTotalCost());
+	   //Log.Info("Session total cost: %d"CR, costController.GetSessionTotalCost());
+	   Display();
      }
      else if(rfidController.GetCounter() >= 0){
        rfidController.SetArrayElementValue(rfidController.GetCounter(), i);
@@ -117,4 +118,19 @@ void ProcessItem()
 
 			costController.DecrementSessionTotalCost(shoppingBasketProduct.GetPrice());
 		}
+}
+
+void Display()
+{
+	Log.Info("||==================================================||"CR);
+	vector<Product> temp = productController.GetProductList();
+	for(int i=0; i<temp.size(); i++)
+	{
+		Log.Info("Product description: %s"CR, temp[i].GetDescription());
+		Log.Info("Product price: R %d.00"CR, temp[i].GetPrice());
+	}
+
+	Log.Info("Total items: %d"CR, temp.size());
+	Log.Info("Session total cost: R %d.00"CR, costController.GetSessionTotalCost());
+	Log.Info("||==================================================||"CR);
 }

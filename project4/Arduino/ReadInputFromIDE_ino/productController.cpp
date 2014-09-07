@@ -12,9 +12,14 @@ vector<Product>::iterator it;
 vector<Product> shopVector;
 vector<Product>::iterator shopIt;
 
+vector<Product> ProductController::GetProductList() 
+{
+	return tempVector;
+}
+
 ProductController::ProductController() 
 {
-	Log.Info("Product Controller constructor");	
+	//Log.Info("Product Controller constructor");	
 }
 
 void ProductController::Initialize()
@@ -33,7 +38,7 @@ void ProductController::Initialize()
 
 bool ProductController::AddShopProducts()//(char* RFIDTag, char* Description, int Price)
 { 
-	Log.Info("AddProductsToShop"CR);
+	//Log.Info("AddProductsToShop"CR);
 
 	Product whiteSugar("8500908889", "Selati_White Sugar 2.5kg", 28);
 	Product regularCoke("8500904E47", "Coca-cola_Regular 2 Litre", 15);
@@ -55,7 +60,7 @@ bool ProductController::AddProduct(char* RFIDTag, char* Description, int Price)
 
   it = tempVector.insert(it, product);
 
-  Log.Info("List contains %d items."CR, tempVector.size());
+  //Log.Info("List contains %d items."CR, tempVector.size());
 
   return true;
 }
@@ -70,7 +75,7 @@ bool ProductController::RemoveProduct(char* RFIDTag)
 		{
 			tempVector.erase(tempVector.begin()+i);
 
-			Log.Info("Item removed."CR);
+			//Log.Info("Item removed."CR);
 			return true;
 		}
 	}
@@ -80,7 +85,7 @@ bool ProductController::RemoveProduct(char* RFIDTag)
 
 Product ProductController::FindProductUsingRFIDTag(char* RFIDTag, bool queryShopInventory)
 {
-	Log.Info("FindProductUsingRFIDTag Begin"CR);
+	//Log.Info("FindProductUsingRFIDTag Begin"CR);
 
 	vector<Product> temp;
 	if(queryShopInventory)
@@ -93,12 +98,12 @@ Product ProductController::FindProductUsingRFIDTag(char* RFIDTag, bool queryShop
 		char* rfidTag = temp[i].GetRFIDTag();
 		if(strcmp(rfidTag, RFIDTag) == 0)	
 		{
-			Log.Info("Match found."CR);			
+			//Log.Info("Match found."CR);			
 			return temp[i];			
 		}
 	}
 	
-	Log.Info("FindProductUsingRFIDTag End"CR);
+	//Log.Info("FindProductUsingRFIDTag End"CR);
 
 	// A quick work-around as you cannot return a null object only a null pointer.
 	Product product; product.SetRFIDTag("-1"); 	product.SetDescription("-1"); 	product.SetPrice(1);
