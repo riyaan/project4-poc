@@ -40,9 +40,9 @@ bool ProductController::AddShopProducts()//(char* RFIDTag, char* Description, in
 { 
 	//Log.Info("AddProductsToShop"CR);
 
-	Product whiteSugar("8500908889", "Selati_White Sugar 2.5kg", 28);
-	Product regularCoke("8500904E47", "Coca-cola_Regular 2 Litre", 15);
-	Product omo("17001FBEAF", "Omo_Multi Active Flex Washing Powder 2kg", 54);
+	Product whiteSugar("8500908889", "Isha - HTC compatible cellphone charger", 400);
+	Product regularCoke("8500904E47", "Cepacol - Lozenges - Blackcurrant Flavour", 29);
+	Product omo("17001FBEAF", "Canon EF 50mm f/1.8 II Lens", 1295);
 
   shopIt = shopVector.insert(shopIt, whiteSugar);
   shopIt = shopVector.insert(shopIt, regularCoke);
